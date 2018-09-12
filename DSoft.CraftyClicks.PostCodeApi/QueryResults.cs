@@ -12,6 +12,7 @@ namespace DSoft.CraftyClicks.PostCodeApi
 
         public QueryResult()
         {
+            Status = QueryStatus.OK;
             Addresses = new List<ClsAddress>();
         }
     }

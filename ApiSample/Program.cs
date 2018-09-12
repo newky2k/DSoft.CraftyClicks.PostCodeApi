@@ -21,6 +21,7 @@ namespace CraftyClicksExampleApp
             string _inputPostCode = Console.ReadLine().Trim();
 
             var options = PostCodeLookupProviderOptions.Defaults;
+           
 
             using (var lookupProvider = new PostCodeLookupProvider(options))
             {

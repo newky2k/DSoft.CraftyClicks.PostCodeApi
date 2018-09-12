@@ -46,6 +46,8 @@ namespace DSoft.CraftyClicks.PostCodeApi
                             AddressID = i,
                             AddressLine1 = node.line_1,
                             AddressLine2 = node.line_2,
+                            Department = node.department_name,
+                            Organisation = node.organisation_name,
 
                             County = jsonResponseObject.postal_county,
                             PostCode = jsonResponseObject.postcode,
@@ -88,13 +90,16 @@ namespace DSoft.CraftyClicks.PostCodeApi
                                 result.Status = QueryStatus.InternalServerError;
                                 break;
                             default:
-                                result.Status = QueryStatus.OK;
+                                result.Status = QueryStatus.Unknown;
                                 break;
                         }
                     }
                 }
             }
-
+            else
+            {
+                result.Status = QueryStatus.Unknown;
+            }
             return result;
         }
 

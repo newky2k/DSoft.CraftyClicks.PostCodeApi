@@ -17,6 +17,8 @@ namespace DSoft.CraftyClicks.PostCodeApi
         private string _mCounty;
         private string _mPostCode;
         private Guid _mAccessToken;
+        private string _organisation;
+        private string _department;
         #endregion
 
         #region Constructor
@@ -68,6 +70,23 @@ namespace DSoft.CraftyClicks.PostCodeApi
             get { return this._mPostCode; }
             set { this._mPostCode = value; }
         }
+
+ 
+
+        public string Department
+        {
+            get { return _department; }
+            set { _department = value; }
+        }
+
+
+        public string Organisation
+        {
+            get { return _organisation; }
+            set { _organisation = value; }
+        }
+
+  
         #endregion
     }
  
