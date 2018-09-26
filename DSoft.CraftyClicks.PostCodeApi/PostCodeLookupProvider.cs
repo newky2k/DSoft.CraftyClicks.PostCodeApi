@@ -32,6 +32,7 @@ namespace DSoft.CraftyClicks.PostCodeApi
 
             var jsonResponseObject = JsonConvert.DeserializeObject<dynamic>(jsonString);
 
+
             if (jsonResponseObject != null)
             {
                 if (jsonResponseObject.delivery_points != null)
@@ -49,7 +50,7 @@ namespace DSoft.CraftyClicks.PostCodeApi
                             Department = node.department_name,
                             Organisation = node.organisation_name,
 
-                            County = jsonResponseObject.postal_county,
+                            County = jsonResponseObject.traditional_county,
                             PostCode = jsonResponseObject.postcode,
                             Town = jsonResponseObject.town
                         };
