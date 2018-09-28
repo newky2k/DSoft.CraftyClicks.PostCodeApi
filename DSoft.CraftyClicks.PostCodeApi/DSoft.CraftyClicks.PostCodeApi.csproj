@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.1.1.0</Version>
+    <Version>1.1.2.0</Version>
     <Authors>newky2k</Authors>
     <PackageLicenseUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi</PackageProjectUrl>
