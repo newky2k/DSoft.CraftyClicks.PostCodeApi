@@ -1,14 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0; net6.0;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.1.2.0</Version>
     <Authors>newky2k</Authors>
-    <PackageLicenseUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>.Net standard library for accessing the CraftyClicks UK PostCode Lookup Api</Description>
+    <Title>DSoft.CraftyClicks.PostCodeApi</Title>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
