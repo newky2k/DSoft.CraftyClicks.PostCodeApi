@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace DSoft.CraftyClicks.PostCodeApi
 {
-    public class PostCodeLookupProvider : IDisposable
-    {
+    public class PostCodeLookupProvider : IPostCodeLookupProvider, IDisposable
+	{
         private PostCodeLookupProviderOptions _options;
+
 
         public PostCodeLookupProvider(PostCodeLookupProviderOptions options)
         {

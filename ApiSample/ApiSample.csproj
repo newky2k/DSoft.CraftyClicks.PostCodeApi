@@ -54,11 +54,5 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DSoft.CraftyClicks.PostCodeApi\DSoft.CraftyClicks.PostCodeApi.csproj">
-      <Project>{cc95a4c7-02ef-4cd1-bb4f-914bc5184066}</Project>
-      <Name>DSoft.CraftyClicks.PostCodeApi</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
