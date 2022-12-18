@@ -4,9 +4,8 @@ using System.Text;
 
 namespace DSoft.Fetchify.Api.Client.Models.Options
 {
-	public class PostCodeLookupProviderOptions
+	internal class PostCodeLookupProviderOptions
 	{
-		public string ApiKey { get; set; }
 
 		public string BasicApiUrl { get; set; }
 

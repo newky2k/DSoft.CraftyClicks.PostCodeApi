@@ -14,12 +14,9 @@ namespace TestHarness
 
 			string _inputPostCode = "AA11AB";
 
-			var options = PostCodeLookupProviderOptions.Defaults;
-
-
-			using (var lookupProvider = PostCodeLookupProviderFactory.Create(options))
+			using (var lookupProvider = PostCodeLookupProviderFactory.Create())
 			{
-				var result = await lookupProvider.GetPostCodeAddressesAsync(_inputPostCode, AddressMode.Rapid, true);
+				var result = await lookupProvider.GetPostCodeAddressesAsync(_inputPostCode, AddressMode.Rapid, null, true);
 
 				if (result.Status != QueryStatus.OK)
 				{

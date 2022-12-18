@@ -10,9 +10,9 @@ namespace DSoft.Fetchify.Api.Client
 	{
 		private static HttpClient httpClient = new HttpClient();
 
-		public static IPostCodeLookupProvider Create(PostCodeLookupProviderOptions options)
+		public static IPostCodeLookupProvider Create()
 		{
-			return new PostCodeLookupProvider(options, httpClient);
+			return new PostCodeLookupProvider(httpClient);
 		}
 	}
 }

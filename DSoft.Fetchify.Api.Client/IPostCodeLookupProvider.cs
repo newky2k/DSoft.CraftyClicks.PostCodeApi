@@ -13,6 +13,6 @@ namespace DSoft.Fetchify.Api.Client
 		/// <param name="postCode"></param>
 		/// <param name="mode"></param>
 		/// <returns></returns>
-		Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, bool includeGeocode = false);
+		Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, string apiKey, bool includeGeocode = false);
 	}
 }

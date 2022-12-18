@@ -21,81 +21,76 @@ namespace DSoft.Fetchify.Api.Client
 	{
 		#region Fields
 		private HttpClient _httpClient;
-		private PostCodeLookupProviderOptions _options;
+		private PostCodeLookupProviderOptions _options = PostCodeLookupProviderOptions.Defaults;
 		#endregion
 
 		#region Constructors
 
 
-		public PostCodeLookupProvider(PostCodeLookupProviderOptions options, HttpClient httpClient)
+		public PostCodeLookupProvider(HttpClient httpClient)
 		{
-			_options = options;
 			_httpClient = httpClient;
-		}
-
-		public PostCodeLookupProvider(IOptions<PostCodeLookupProviderOptions> options)
-		{
-			_options = options.Value;
 		}
 
 		#endregion
 
 		#region Public Methods
-		public async Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, bool includeGeocode = false)
+		public async Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, string apiKey, bool includeGeocode = false)
 		{
 			var result = new QueryResult();
 
 			var urlBase = (mode == AddressMode.Basic) ? _options.BasicApiUrl : _options.RapidApiUrl;
 
-			var url = $"{urlBase}?postcode={postCode}&response=data_formatted&key={_options.ApiKey}";
+			var url = $"{urlBase}?postcode={postCode}&response=data_formatted&key={apiKey}";
 
 			if (includeGeocode)
 				url += "&include_geocode=true";
 
-			var jStream = await GetResponseAsync(url);
+			var sResult = await GetResultAsync(url, mode);
 
-			if (jStream != null)
+			if (sResult != null)
 			{
+				if (!string.IsNullOrWhiteSpace(sResult.ErrorCode))
+				{
+					switch (sResult.ErrorCode)
+					{
+						case "0001":
+							result.Status = QueryStatus.PostCodeNotFound;
+							break;
+						case "0002":
+							result.Status = QueryStatus.InvalidPostCodeFormat;
+							break;
+						case "7001":
+							result.Status = QueryStatus.DemoLimitExceeded;
+							break;
+						case "8001":
+							result.Status = QueryStatus.InvalidOrNoAccessToken;
+							break;
+						case "8003":
+							result.Status = QueryStatus.AccountCrediteAllowanceExceeded;
+							break;
+						case "8004":
+							result.Status = QueryStatus.AccessDeniedDueToAccessRules;
+							break;
+						case "8005":
+							result.Status = QueryStatus.AccessDeniedAccountSuspended;
+							break;
+						case "9001":
+							result.Status = QueryStatus.InternalServerError;
+							break;
+						default:
+							result.Status = QueryStatus.Unknown;
+							break;
+					}
+				}
+
 				switch (mode)
 				{
 					case AddressMode.Rapid:
 						{
-							var response = await JsonSerializer.DeserializeAsync<RapidPostCodeResponse>(jStream);
+							var response = sResult as RapidPostCodeResponse;
 
-							if (!string.IsNullOrWhiteSpace(response.ErrorCode))
-							{
-								switch (response.ErrorCode)
-								{
-									case "0001":
-										result.Status = QueryStatus.PostCodeNotFound;
-										break;
-									case "0002":
-										result.Status = QueryStatus.InvalidPostCodeFormat;
-										break;
-									case "7001":
-										result.Status = QueryStatus.DemoLimitExceeded;
-										break;
-									case "8001":
-										result.Status = QueryStatus.InvalidOrNoAccessToken;
-										break;
-									case "8003":
-										result.Status = QueryStatus.AccountCrediteAllowanceExceeded;
-										break;
-									case "8004":
-										result.Status = QueryStatus.AccessDeniedDueToAccessRules;
-										break;
-									case "8005":
-										result.Status = QueryStatus.AccessDeniedAccountSuspended;
-										break;
-									case "9001":
-										result.Status = QueryStatus.InternalServerError;
-										break;
-									default:
-										result.Status = QueryStatus.Unknown;
-										break;
-								}
-							}
-							else if (response.DeliveryPoints.Any())
+							if (response.DeliveryPoints.Any())
 							{
 								//If the node list contains address nodes then move on.
 								int i = 0;
@@ -140,42 +135,9 @@ namespace DSoft.Fetchify.Api.Client
 						break;
 					case AddressMode.Basic:
 						{
-							var response = await JsonSerializer.DeserializeAsync<BasicPostCodeResponse>(jStream);
+							var response = sResult as BasicPostCodeResponse;
 
-							if (!string.IsNullOrWhiteSpace(response.ErrorCode))
-							{
-								switch (response.ErrorCode)
-								{
-									case "0001":
-										result.Status = QueryStatus.PostCodeNotFound;
-										break;
-									case "0002":
-										result.Status = QueryStatus.InvalidPostCodeFormat;
-										break;
-									case "7001":
-										result.Status = QueryStatus.DemoLimitExceeded;
-										break;
-									case "8001":
-										result.Status = QueryStatus.InvalidOrNoAccessToken;
-										break;
-									case "8003":
-										result.Status = QueryStatus.AccountCrediteAllowanceExceeded;
-										break;
-									case "8004":
-										result.Status = QueryStatus.AccessDeniedDueToAccessRules;
-										break;
-									case "8005":
-										result.Status = QueryStatus.AccessDeniedAccountSuspended;
-										break;
-									case "9001":
-										result.Status = QueryStatus.InternalServerError;
-										break;
-									default:
-										result.Status = QueryStatus.Unknown;
-										break;
-								}
-							}
-							else if (response.Thoroughfares.Any())
+							if (response.Thoroughfares.Any())
 							{
 								//If the node list contains address nodes then move on.
 								int i = 0;
@@ -238,6 +200,26 @@ namespace DSoft.Fetchify.Api.Client
 			var response = await _httpClient.GetStreamAsync(url);
 
 			return response;
+		}
+
+		private async Task<ErrorableResponse> GetResultAsync(string url, AddressMode mode)
+		{
+			var jStream = await GetResponseAsync(url);
+
+			if (jStream == null)
+				throw new Exception("No result from server");
+
+			ErrorableResponse result;
+
+			if (mode.Equals(AddressMode.Rapid))
+				result = await JsonSerializer.DeserializeAsync<RapidPostCodeResponse>(jStream);
+			else if (mode.Equals(AddressMode.Basic))
+				result = await JsonSerializer.DeserializeAsync<BasicPostCodeResponse>(jStream);
+			else
+				throw new Exception("Unexpected Address Mode");
+
+			return result;
+
 		}
 
 		#endregion
