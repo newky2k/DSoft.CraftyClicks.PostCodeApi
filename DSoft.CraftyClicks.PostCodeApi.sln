@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSoft.Fetchify.Api.Client", "DSoft.Fetchify.Api.Client\DSoft.Fetchify.Api.Client.csproj", "{62CCC545-CB9C-4D4F-8F67-3943FC0D13E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSoft.Fetchify.Api.Client", "DSoft.Fetchify.Api.Client\DSoft.Fetchify.Api.Client.csproj", "{62CCC545-CB9C-4D4F-8F67-3943FC0D13E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHarness", "TestHarness\TestHarness.csproj", "{55E43C30-E262-4601-AC2A-84E012587EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHarness", "TestHarness\TestHarness.csproj", "{55E43C30-E262-4601-AC2A-84E012587EE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".ci", ".ci", "{78CA8089-B822-4B8A-A7E3-9DB43756F53B}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines-mergetest.yml = azure-pipelines-mergetest.yml
+		azure-pipelines-release.yml = azure-pipelines-release.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

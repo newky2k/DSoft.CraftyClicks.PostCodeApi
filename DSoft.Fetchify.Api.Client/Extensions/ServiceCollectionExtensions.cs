@@ -11,6 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
 		public static IServiceCollection AddFetchifyProviders(this IServiceCollection services)
 		{
 			services.TryAddScoped<IPostCodeLookupProvider, PostCodeLookupProvider>();
+			services.AddHttpClient<PostCodeLookupProvider>();
+
 
 			return services;
 		}

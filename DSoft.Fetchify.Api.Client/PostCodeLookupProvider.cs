@@ -2,7 +2,6 @@
 using DSoft.Fetchify.Api.Client.Models;
 using DSoft.Fetchify.Api.Client.Models.Options;
 using DSoft.Fetchify.Api.Client.Models.Response;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
