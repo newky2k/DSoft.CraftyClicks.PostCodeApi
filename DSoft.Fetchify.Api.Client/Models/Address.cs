@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace DSoft.Fetchify.Api.Client.Models
 {
@@ -97,6 +98,26 @@ namespace DSoft.Fetchify.Api.Client.Models
 		}
 
 		#endregion
+
+		public override string ToString()
+		{
+			var strBuilder = new StringBuilder();
+
+			strBuilder.AppendLine(Environment.NewLine);
+			strBuilder.AppendLine("Line 1: " + Line1);
+			strBuilder.AppendLine("Line 2: " + Line2);
+			strBuilder.AppendLine("Line 3: " + Line3);
+			strBuilder.AppendLine("Town: " + Town);
+			strBuilder.AppendLine("County: " + County);
+			strBuilder.AppendLine("Post Code: " + PostCode);
+
+			if (this.GeoLocation != null)
+			{
+				strBuilder.AppendLine($"Corodinates: Lat: {this.GeoLocation.Latitude} Long: {this.GeoLocation.Longitude}");
+			}
+
+			return strBuilder.ToString();
+		}
 	}
 
 	public class GeoLocation

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DSoft.System.Mvvm.Hosting" Version="3.1.2208.151" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DSoft.Fetchify.Api.Client\DSoft.Fetchify.Api.Client.csproj" />
   </ItemGroup>
 

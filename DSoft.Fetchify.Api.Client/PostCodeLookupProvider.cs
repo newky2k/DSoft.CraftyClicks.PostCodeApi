@@ -81,6 +81,8 @@ namespace DSoft.Fetchify.Api.Client
 							result.Status = QueryStatus.Unknown;
 							break;
 					}
+
+					return result;
 				}
 
 				switch (mode)
