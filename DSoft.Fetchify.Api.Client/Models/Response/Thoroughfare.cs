@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.Json.Serialization;
+
+namespace DSoft.Fetchify.Api.Client.Models.Response
+{
+	internal class Thoroughfare
+	{
+		[JsonPropertyName("line_1")]
+		public string Line1 { get; set; }
+
+		[JsonPropertyName("line_2")]
+		public string Line2 { get; set; }
+
+		[JsonPropertyName("line_3")]
+		public string Line3 { get; set; }
+	}
+}
