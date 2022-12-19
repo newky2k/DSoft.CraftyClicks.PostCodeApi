@@ -11,6 +11,7 @@ trigger:
   paths:
     exclude:
     - '*.yml'
+    - readme.md
 
 pool:
   vmImage: 'windows-latest'
