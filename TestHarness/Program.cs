@@ -19,11 +19,11 @@ namespace TestHarness
 
 			Console.Write("Please enter the postcode:");
 
-			string _inputPostCode = Console.ReadLine().Trim();
+			string _inputPostCode = "IP2 8QH";// Console.ReadLine().Trim();
 
 			Console.Write("Enter your API Key/Token:");
 
-			string inputApiKey = Console.ReadLine().Trim();
+			string inputApiKey = "f8e2e-71bdb-8102c-08a62";// Console.ReadLine().Trim();
 
 			//string _inputPostCode = "AA11AB";
 
@@ -56,7 +56,7 @@ namespace TestHarness
 			//Example using DI and Service Host
 			var lookupProvider = ServiceHost.GetRequiredService<IPostCodeLookupProvider>();
 
-			var result = await lookupProvider.GetPostCodeAddressesAsync(_inputPostCode, AddressMode.Rapid, inputApiKey, true);
+			var result = await lookupProvider.GetPostCodeAddressesAsync(_inputPostCode, AddressMode.Basic, inputApiKey, true);
 
 			if (result.Status != QueryStatus.OK)
 			{

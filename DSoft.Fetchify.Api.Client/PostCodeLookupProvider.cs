@@ -109,7 +109,8 @@ namespace DSoft.Fetchify.Api.Client
 
 										County = response.TraditionalCounty,
 										PostCode = response.Postcode,
-										Town = response.Town
+										Town = response.Town,
+										Country = "United Kingdom",
 									};
 
 									if (response.Geocode != null)
@@ -120,6 +121,8 @@ namespace DSoft.Fetchify.Api.Client
 											Latitude = response.Geocode.Latitude,
 										};
 
+										if (response.Geocode.OrdnanceSurvey != null)
+											address.Nation = response.Geocode.OrdnanceSurvey.CountryText;
 									}
 
 									result.Addresses.Add(address);
@@ -153,7 +156,8 @@ namespace DSoft.Fetchify.Api.Client
 										Line3 = node.Line3,
 										County = response.TraditionalCounty,
 										PostCode = response.Postcode,
-										Town = response.Town
+										Town = response.Town,
+										Country = "United Kingdom",
 									};
 
 									if (response.Geocode != null)
@@ -163,6 +167,10 @@ namespace DSoft.Fetchify.Api.Client
 											Longitude = response.Geocode.Longitude,
 											Latitude = response.Geocode.Latitude,
 										};
+
+
+										if (response.Geocode.OrdnanceSurvey != null)
+											address.Nation = response.Geocode.OrdnanceSurvey.CountryText;
 
 									}
 

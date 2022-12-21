@@ -20,6 +20,8 @@ namespace DSoft.Fetchify.Api.Client.Models
 		private string _organisation;
 		private string _department;
 		private GeoLocation _location;
+		private string _country;
+		private string _nation;
 		#endregion
 
 		#region Constructor
@@ -84,7 +86,18 @@ namespace DSoft.Fetchify.Api.Client.Models
 			set { _department = value; }
 		}
 
+		public string Country
+		{
+			get { return _country; }
+			set { _country = value; }
+		}
 
+		public string Nation
+		{
+			get { return _nation; }
+			set { _nation = value; }
+		}
+		
 		public string Organisation
 		{
 			get { return _organisation; }
@@ -109,6 +122,7 @@ namespace DSoft.Fetchify.Api.Client.Models
 			strBuilder.AppendLine("Line 3: " + Line3);
 			strBuilder.AppendLine("Town: " + Town);
 			strBuilder.AppendLine("County: " + County);
+			strBuilder.AppendLine("Country: " + Country);
 			strBuilder.AppendLine("Post Code: " + PostCode);
 
 			if (this.GeoLocation != null)
