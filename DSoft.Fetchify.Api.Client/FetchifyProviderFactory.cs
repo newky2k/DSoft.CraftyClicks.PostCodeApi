@@ -13,6 +13,10 @@ namespace DSoft.Fetchify.Api.Client
 	{
 		private static HttpClient httpClient = new HttpClient();
 
+		/// <summary>
+		/// Creates an instance of the post code lookup provider.
+		/// </summary>
+		/// <returns>IPostCodeLookupProvider.</returns>
 		public static IPostCodeLookupProvider CreatePostCodeLookupProvider()
 		{
 			return new PostCodeLookupProvider(httpClient);
