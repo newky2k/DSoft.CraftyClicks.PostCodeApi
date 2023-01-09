@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".ci", ".ci", "{78CA8089-B82
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines-mergetest.yml = azure-pipelines-mergetest.yml
 		azure-pipelines-release.yml = azure-pipelines-release.yml
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Global

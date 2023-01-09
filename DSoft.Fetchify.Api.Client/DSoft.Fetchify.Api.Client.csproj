@@ -2,18 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0; net6.0;</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
     <Version>1.2.0.0</Version>
-    <Authors>newky2k</Authors>
-    <PackageProjectUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/newky2k/DSoft.CraftyClicks.PostCodeApi</RepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>.Net client library for accessing the Fetchify(Formerly CraftyClicks) JSON Api</Description>
     <Title>DSoft.Fetchify.Api.Client</Title>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
-    <Copyright>Copyright © 2022 DSoft</Copyright>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
