@@ -7,9 +7,7 @@ Client library for Fetchify (Formerly CraftyClicks) JSON APIs.
 - UK Postcode Lookup
   - Basic and Rapid Modes with Geocoding
 
-
-  ## Features
-
-  - Factory for creating instances of the providers
-  - Dependency injection support with `IHttpClientFactory` support
+## Features
+ - Factory for creating instances of the providers
+ - Dependency injection support with `IHttpClientFactory` support
 
