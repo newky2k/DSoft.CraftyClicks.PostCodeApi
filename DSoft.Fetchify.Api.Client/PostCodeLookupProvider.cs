@@ -19,22 +19,36 @@ namespace DSoft.Fetchify.Api.Client
 	internal class PostCodeLookupProvider : IPostCodeLookupProvider
 	{
 		#region Fields
-		private HttpClient _httpClient;
-		private PostCodeLookupProviderOptions _options = PostCodeLookupProviderOptions.Defaults;
-		#endregion
+		private readonly HttpClient _httpClient;
+		private readonly PostCodeLookupProviderOptions _options = PostCodeLookupProviderOptions.Defaults;
+        #endregion
 
-		#region Constructors
+        #region Constructors
 
 
-		public PostCodeLookupProvider(HttpClient httpClient)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PostCodeLookupProvider"/> class.
+        /// </summary>
+        /// <param name="httpClient">The HTTP client.</param>
+        public PostCodeLookupProvider(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
 		}
 
-		#endregion
+        #endregion
 
-		#region Public Methods
-		public async Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, string apiKey, bool includeGeocode = false)
+        #region Public Methods
+        /// <summary>
+        /// Get the addresses associated with a post code address
+        /// </summary>
+        /// <param name="postCode">Post code to query</param>
+        /// <param name="mode">Basic or Rapid address query</param>
+        /// <param name="apiKey">Fetchify Api key</param>
+        /// <param name="includeGeocode">(Optional) Should the Latitude and Longitude co-ordinates be returned</param>
+        /// <returns>
+        /// Task&lt;QueryResult&gt;.
+        /// </returns>
+        public async Task<QueryResult> GetPostCodeAddressesAsync(string postCode, AddressMode mode, string apiKey, bool includeGeocode = false)
 		{
 			var result = new QueryResult();
 
@@ -200,11 +214,16 @@ namespace DSoft.Fetchify.Api.Client
 
 		}
 
-		#endregion
+        #endregion
 
-		#region Private Methods
+        #region Private Methods
 
-		private async Task<Stream> GetResponseAsync(string url)
+        /// <summary>
+        /// Gets the response asynchronous.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
+        private async Task<Stream> GetResponseAsync(string url)
 		{
 			var response = await _httpClient.GetStreamAsync(url);
 
