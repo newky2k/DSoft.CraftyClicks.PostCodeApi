@@ -23,7 +23,7 @@ namespace TestHarness
 
 			Console.Write("Enter your API Key/Token:");
 
-			string inputApiKey = "f8e2e-71bdb-8102c-08a62";// Console.ReadLine().Trim();
+			string inputApiKey = "<InsertApiKeyHere>";// Console.ReadLine().Trim();
 
 			//string _inputPostCode = "AA11AB";
 
