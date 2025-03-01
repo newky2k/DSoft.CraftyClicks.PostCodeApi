@@ -136,7 +136,9 @@ namespace DSoft.Fetchify.Api.Client
 										};
 
 										if (response.Geocode.OrdnanceSurvey != null)
+										{
 											address.Nation = response.Geocode.OrdnanceSurvey.CountryText;
+										}
 									}
 
 									result.Addresses.Add(address);
@@ -218,23 +220,11 @@ namespace DSoft.Fetchify.Api.Client
 
         #region Private Methods
 
-        /// <summary>
-        /// Gets the response asynchronous.
-        /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
-        private async Task<Stream> GetResponseAsync(string url)
-		{
-			var response = await _httpClient.GetStreamAsync(url);
-
-			return response;
-		}
-
 		private async Task<ErrorableResponse> GetResultAsync(string url, AddressMode mode)
 		{
-			var jStream = await GetResponseAsync(url);
+			var jStream = await _httpClient.GetStreamAsync(url);
 
-			if (jStream == null)
+            if (jStream == null)
 				throw new Exception("No result from server");
 
 			ErrorableResponse result;
