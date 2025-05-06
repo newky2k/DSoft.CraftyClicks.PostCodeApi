@@ -1,23 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0;net9.0;</TargetFrameworks>
-    <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Version>1.2.0.0</Version>
-    <Description>.Net client library for accessing the Fetchify(Formerly CraftyClicks) JSON Api</Description>
-    <Title>DSoft.Fetchify.Api.Client</Title>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-	  <PackageReleaseNotes>Updated to .NET 9.0, dropped .NET 6.0 support</PackageReleaseNotes>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net472;net8.0;net9.0;</TargetFrameworks>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<Version>1.2.0.0</Version>
+		<Description>.Net client library for accessing the Fetchify(Formerly CraftyClicks) JSON Api</Description>
+		<Title>DSoft.Fetchify.Api.Client</Title>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageReleaseNotes>Updated to .NET 9.0, dropped .NET 6.0 support</PackageReleaseNotes>
+	</PropertyGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard2.0')) ">
-    <PackageReference Include="System.Text.Json" Version="9.0.0" />
-  </ItemGroup>
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net472')) ">
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="../readme.md" Pack="true" PackagePath="\" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
-  </ItemGroup>
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard2.0')) ">
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="../readme.md" Pack="true" PackagePath="\" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
+	</ItemGroup>
 
 </Project>
