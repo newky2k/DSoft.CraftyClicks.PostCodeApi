@@ -14,7 +14,12 @@
 		<Configurations>Debug;Release</Configurations>
 		<NoWarn>1701;1702;CS8002</NoWarn>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageIcon>DSIcon.png</PackageIcon>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)DSIcon.png" Pack="true" PackagePath="\" Visible="false" />
+	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
 		<DebugSymbols>true</DebugSymbols>

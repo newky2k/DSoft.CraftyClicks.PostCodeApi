@@ -27,7 +27,7 @@ dotnet test UnitTests/UnitTests.csproj -c Release
 
 ## Shared build configuration
 
-`Directory.Build.props` (root) centralizes signing, license, SourceLink and `NoWarn` for all projects. The `.csproj` only sets package id, description, release notes and TFMs. No project sets a version: the release workflow injects `/p:Version`, `/p:AssemblyVersion` and `/p:FileVersion`, so a local build produces a `1.0.0` package.
+`Directory.Build.props` (root) centralizes signing, license, package icon (`DSIcon.png`), SourceLink and `NoWarn` for all projects. The `.csproj` only sets package id, description, release notes and TFMs. No project sets a version: the release workflow injects `/p:Version`, `/p:AssemblyVersion` and `/p:FileVersion`, so a local build produces a `1.0.0` package.
 
 ## Architecture
 
