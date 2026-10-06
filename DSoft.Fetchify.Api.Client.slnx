@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/.ci/">
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/release.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="UnitTests/UnitTests.csproj" />
+  </Folder>
+  <Project Path="DSoft.Fetchify.Api.Client/DSoft.Fetchify.Api.Client.csproj" />
+  <Project Path="TestHarness/TestHarness.csproj" />
+</Solution>
