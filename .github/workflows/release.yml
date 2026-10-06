@@ -34,12 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # The test project targets net9.0, so the .NET 9 runtime is needed alongside the .NET 10 SDK.
       - uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: |
-            9.x
-            10.x
+          dotnet-version: '10.x'
 
       - name: Version
         id: version

@@ -21,7 +21,7 @@ dotnet build DSoft.Fetchify.Api.Client.slnx -c Release
 dotnet test UnitTests/UnitTests.csproj -c Release
 ```
 
-- The library targets `netstandard2.0;net472;net8.0;net9.0`. `UnitTests` (MSTest) and `TestHarness` (console sample) target `net9.0`, so running the tests needs the .NET 9 runtime as well as the SDK.
+- The library targets `netstandard2.0;net472;net10.0`. `UnitTests` (MSTest) and `TestHarness` (console sample) target `net10.0`. Build with the .NET 10 SDK.
 - CI is GitHub Actions (`.github/workflows/`): `ci.yml` builds Release and runs the tests for pull requests into `main` or `development` and publishes nothing; `release.yml` runs on every push to `main` (changes only to Markdown or workflow files are skipped; run it by hand to test a workflow change), builds Release as `1.2.<yyMM>.<run number>` plus `RELEASE_SUFFIX` (empty for a stable version, set it to `-prerelease` in the workflow to publish a prerelease), runs the tests, uploads the package as the `drop` artifact, pushes it to nuget.org with Trusted Publishing (OIDC, `NUGET_USER` secret, `nuget` environment), then tags the commit `v<version>` and creates a GitHub release with the package attached.
 - Assemblies are strong-named/signed (`DSoft.snk`); `Release` builds enable SourceLink (from the SDK) and pack the PDBs into the package. `GeneratePackageOnBuild` is on, so a Release build produces the `.nupkg` under `DSoft.Fetchify.Api.Client/bin/Release`.
 
